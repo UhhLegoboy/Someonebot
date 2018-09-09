@@ -91,7 +91,7 @@ var cursed = [
     './images/cursed/bigmouth.jpg',
     './images/cursed/bike.jpg',
     './images/cursed/black.jpg',
-    './images/cursed/blacktwocat.jpg',
+    './images/cursed/blacktwocatjpg',
     './images/cursed/cardate.jpg',
     './images/cursed/catassassination.jpg',
     './images/cursed/catparty.jpg',
@@ -149,6 +149,7 @@ var neo = './neopets.mp3'
 function play(connection) {
     const dispatcher = connection.playFile(neo);
     dispatcher.on("end", end => {connection.leave();
+        console.log('left');
     });
 }
 
@@ -160,20 +161,24 @@ bot.on('message', (message) => {
 //Command Functions//
 function Anime() {
     message.channel.send({files: [anime[Math.floor(Math.random() * anime.length)]]})
+    console.log('anime');
 }
 
 function Egg() {
-	message.channel.send({files:['./images/egg.png']})
+    message.channel.send({files:['./images/egg.png']})
+    console.log('egg');
 }
 
 function Neopets() {
 	if (message.member.voiceChannel) {
 		if (!message.guild.voiceConnection) message.member.voiceChannel.Join().then(function(connection) {
-			play(connection);
+            play(connection);
+            console.log('now playing');
 		});
 		
 		} else {
                 message.channel.send('Please join a voice channel' + kaomojis[Math.floor(Math.random() * kaomojis.length)]);
+                console.log('please join voice channel');
 				return;
 		}
 		
@@ -181,11 +186,18 @@ function Neopets() {
 	
 function Someone() {
             message.channel.send('**' + message.guild.members.random() + ' ' + kaomojis[Math.floor(Math.random() * kaomojis.length)] + '**');
+            console.log('@someone');
 }
 
 function Cursed() {
     message.channel.send({files: [cursed[Math.floor(Math.random() * cursed.length)]]})
+    console.log('cursed');
 }
+
+function Help() {
+    message.channel.send('All I can do right now tbh is random, cursed, and anime.');
+    console.log('help');
+};
 
 if (message.author.bot) return;
 
@@ -206,7 +218,11 @@ if (message.isMentioned(bot.user)) {
     
 	if (message.content.includes('cursed')) {
 		Cursed();
-	}
+    }
+    
+    if (message.content.includes('help')) {
+        Help();
+    }
 
 };
 });
