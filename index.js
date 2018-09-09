@@ -91,7 +91,7 @@ var cursed = [
     './images/cursed/bigmouth.jpg',
     './images/cursed/bike.jpg',
     './images/cursed/black.jpg',
-    './images/cursed/blacktwocatjpg',
+    './images/cursed/blacktwocat.jpg',
     './images/cursed/cardate.jpg',
     './images/cursed/catassassination.jpg',
     './images/cursed/catparty.jpg',
