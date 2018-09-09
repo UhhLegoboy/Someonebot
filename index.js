@@ -213,4 +213,4 @@ if (message.isMentioned(bot.user)) {
 
 
 
-bot.login('NDg2NjM5MTk1OTIyODkwNzUy.DnCB_Q.NYxDHNLGmhL-UoQ8icaEQXnHiSc');
+bot.login(process.env.token);
