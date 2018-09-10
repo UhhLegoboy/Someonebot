@@ -199,6 +199,13 @@ function Help() {
     console.log('help');
 };
 
+function me_irl() {
+    var post = require('https://www.reddit.com/r/me_irl/random.json');
+    var image = post.url;
+    message.send(image);
+    console.log('me_irl');
+}
+
 if (message.author.bot) return;
 
 if (message.isMentioned(bot.user)) {
@@ -222,6 +229,10 @@ if (message.isMentioned(bot.user)) {
     
     if (message.content.includes('help')) {
         Help();
+    }
+
+    if (message.content.includes('me_irl')) {
+        me_irl();
     }
 
 };
